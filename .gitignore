@@ -1,0 +1,6 @@
+.idea/*
+native/grouper/target*
+out/*
+*.iml
+
+native/grouper/.idea/*
