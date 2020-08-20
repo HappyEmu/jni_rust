@@ -13,6 +13,8 @@ use std::sync::Mutex;
 use protos::pc::PatientCase;
 use protobuf::Message;
 use std::time::Duration;
+use std::os::raw::c_char;
+use std::ffi::CStr;
 
 lazy_static! {
     static ref SPECIFICATIONS: Mutex<HashMap<i64, Spec>> = Mutex::new(HashMap::new());
@@ -31,6 +33,35 @@ impl Spec {
             some_data: HashMap::new(),
         }
     }
+}
+
+#[no_mangle]
+pub extern "C" fn load_specification(url: &str) -> u64 {
+    println!("Loading spec from {}", url);
+
+    1024
+}
+
+#[repr(C)]
+pub struct Buffer {
+    data: *mut u8,
+    len: usize,
+}
+
+#[no_mangle]
+pub extern "C" fn group(pc: *const c_char, spec_handle: u64, res_length: &mut i32) -> Buffer {
+    let cstr = unsafe { CStr::from_ptr(pc) }.to_str().unwrap();
+    println!("grouping {}", cstr);
+
+    let mut buf = vec![1,2,3,4].into_boxed_slice();
+    let data = buf.as_mut_ptr();
+    let len = buf.len();
+    std::mem::forget(buf);
+
+    println!("{}", spec_handle);
+    println!("{:?}", res_length);
+    unsafe { *res_length = 10; }
+    Buffer { data, len }
 }
 
 #[allow(non_snake_case)]
