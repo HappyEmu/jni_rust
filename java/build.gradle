@@ -19,6 +19,6 @@ dependencies {
 application {
     mainClassName = 'Main'
     applicationDefaultJvmArgs = [
-            '-Djava.library.path=/Users/gerberur/work/playground/rust_ffi/libgrouper/target/release'
+            '-Djava.library.path=../libgrouper/target/release'
     ]
 }

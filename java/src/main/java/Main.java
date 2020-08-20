@@ -4,10 +4,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Main {
-    static {
-        System.setProperty("java.library.path", "/Users/gerberur/work/playground/rust_ffi/libgrouper/target/release");
-    }
-
     public static void main(String[] args) throws InvalidProtocolBufferException {
         var specHandle = LibGrouper.loadSpecification("url/to/load/specification");
 
