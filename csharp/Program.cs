@@ -31,7 +31,7 @@ namespace csharp
                 {
                     var proc = new PatientCase.Types.Procedure();
                     proc.Code = "PROC" + j;
-                    proc.Date = 1 << 32;
+                    proc.Date = 1 << 20;
                     proc.Side = PatientCase.Types.Procedure.Types.Side.B;
 
                     procedures.Add(proc);
@@ -44,27 +44,10 @@ namespace csharp
                 pc.SepDate = (2019 << 20 | 6 << 16 | 27 << 11);
                 pc.BirthDate = (1989 << 20 | 6 << 16 | 29 << 11);
                 pc.Diagnoses.AddRange(diagnoses);
-                pc.Procedures.AddRange(procedures);
+                pc.Procedures.AddRange(procedures); 
 
-                var pcArray = pc.ToByteArray();
-
-                unsafe
-                {
-                    fixed(byte* ptr = &pcArray[0])
-                    {
-                        uint length = 0;
-                        byte* result = LibGrouper.Group(ptr, (uint) pcArray.Length, specHandle, out length);
-                        
-                        byte[] buf = new byte[length];
-                        Marshal.Copy((IntPtr) result, buf, 0, (int) length);
-                        
-                        // TODO [MemoryLeak]: Release native memory
-                        // TODO [Perf] Find way to omit need for copy
-                        
-                        var parsed = Result.Parser.ParseFrom(buf);
-                        accum += parsed.CalculateSize();
-                    }
-                }
+                var result = LibGrouper.Group(pc, specHandle);
+                accum += result.CalculateSize();
             }
             stopwatch.Stop();
             
