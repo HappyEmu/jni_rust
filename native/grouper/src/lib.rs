@@ -78,7 +78,7 @@ pub extern "system" fn Java_LibGrouper_group(
 
     // Spend some time to simulate grouping
     loop {
-        if now.elapsed().as_micros() >= 30 {
+        if now.elapsed().as_micros() >= 0 {
             break;
         }
     }

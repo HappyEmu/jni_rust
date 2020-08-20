@@ -15,6 +15,26 @@ message PatientCase {
   int32 los = 12;
   int32 hmv = 13;
   bool bh = 14;
+
+  repeated Diagnosis diagnoses = 15;
+  repeated Procedure procedures = 16;
+
+  message Diagnosis {
+    string code = 1;
+  }
+
+  message Procedure {
+    string code = 1;
+    int32 date = 2;
+
+    enum Side {
+      L = 0;
+      R = 1;
+      B = 2;
+    }
+
+    Side side = 3;
+  }
 }
 
 message Result {

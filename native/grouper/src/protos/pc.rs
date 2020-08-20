@@ -40,6 +40,8 @@ pub struct PatientCase {
     pub los: i32,
     pub hmv: i32,
     pub bh: bool,
+    pub diagnoses: ::protobuf::RepeatedField<PatientCase_Diagnosis>,
+    pub procedures: ::protobuf::RepeatedField<PatientCase_Procedure>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::CachedSize,
@@ -309,10 +311,70 @@ impl PatientCase {
     pub fn set_bh(&mut self, v: bool) {
         self.bh = v;
     }
+
+    // repeated .PatientCase.Diagnosis diagnoses = 15;
+
+
+    pub fn get_diagnoses(&self) -> &[PatientCase_Diagnosis] {
+        &self.diagnoses
+    }
+    pub fn clear_diagnoses(&mut self) {
+        self.diagnoses.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_diagnoses(&mut self, v: ::protobuf::RepeatedField<PatientCase_Diagnosis>) {
+        self.diagnoses = v;
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_diagnoses(&mut self) -> &mut ::protobuf::RepeatedField<PatientCase_Diagnosis> {
+        &mut self.diagnoses
+    }
+
+    // Take field
+    pub fn take_diagnoses(&mut self) -> ::protobuf::RepeatedField<PatientCase_Diagnosis> {
+        ::std::mem::replace(&mut self.diagnoses, ::protobuf::RepeatedField::new())
+    }
+
+    // repeated .PatientCase.Procedure procedures = 16;
+
+
+    pub fn get_procedures(&self) -> &[PatientCase_Procedure] {
+        &self.procedures
+    }
+    pub fn clear_procedures(&mut self) {
+        self.procedures.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_procedures(&mut self, v: ::protobuf::RepeatedField<PatientCase_Procedure>) {
+        self.procedures = v;
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_procedures(&mut self) -> &mut ::protobuf::RepeatedField<PatientCase_Procedure> {
+        &mut self.procedures
+    }
+
+    // Take field
+    pub fn take_procedures(&mut self) -> ::protobuf::RepeatedField<PatientCase_Procedure> {
+        ::std::mem::replace(&mut self.procedures, ::protobuf::RepeatedField::new())
+    }
 }
 
 impl ::protobuf::Message for PatientCase {
     fn is_initialized(&self) -> bool {
+        for v in &self.diagnoses {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
+        for v in &self.procedures {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
         true
     }
 
@@ -402,6 +464,12 @@ impl ::protobuf::Message for PatientCase {
                     let tmp = is.read_bool()?;
                     self.bh = tmp;
                 },
+                15 => {
+                    ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.diagnoses)?;
+                },
+                16 => {
+                    ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.procedures)?;
+                },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
                 },
@@ -456,6 +524,14 @@ impl ::protobuf::Message for PatientCase {
         if self.bh != false {
             my_size += 2;
         }
+        for value in &self.diagnoses {
+            let len = value.compute_size();
+            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+        };
+        for value in &self.procedures {
+            let len = value.compute_size();
+            my_size += 2 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+        };
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
@@ -504,6 +580,16 @@ impl ::protobuf::Message for PatientCase {
         if self.bh != false {
             os.write_bool(14, self.bh)?;
         }
+        for v in &self.diagnoses {
+            os.write_tag(15, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+            os.write_raw_varint32(v.get_cached_size())?;
+            v.write_to_with_cached_sizes(os)?;
+        };
+        for v in &self.procedures {
+            os.write_tag(16, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+            os.write_raw_varint32(v.get_cached_size())?;
+            v.write_to_with_cached_sizes(os)?;
+        };
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -612,6 +698,16 @@ impl ::protobuf::Message for PatientCase {
                 |m: &PatientCase| { &m.bh },
                 |m: &mut PatientCase| { &mut m.bh },
             ));
+            fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<PatientCase_Diagnosis>>(
+                "diagnoses",
+                |m: &PatientCase| { &m.diagnoses },
+                |m: &mut PatientCase| { &mut m.diagnoses },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<PatientCase_Procedure>>(
+                "procedures",
+                |m: &PatientCase| { &m.procedures },
+                |m: &mut PatientCase| { &mut m.procedures },
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<PatientCase>(
                 "PatientCase",
                 fields,
@@ -642,6 +738,8 @@ impl ::protobuf::Clear for PatientCase {
         self.los = 0;
         self.hmv = 0;
         self.bh = false;
+        self.diagnoses.clear();
+        self.procedures.clear();
         self.unknown_fields.clear();
     }
 }
@@ -655,6 +753,443 @@ impl ::std::fmt::Debug for PatientCase {
 impl ::protobuf::reflect::ProtobufValue for PatientCase {
     fn as_ref(&self) -> ::protobuf::reflect::ReflectValueRef {
         ::protobuf::reflect::ReflectValueRef::Message(self)
+    }
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct PatientCase_Diagnosis {
+    // message fields
+    pub code: ::std::string::String,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a PatientCase_Diagnosis {
+    fn default() -> &'a PatientCase_Diagnosis {
+        <PatientCase_Diagnosis as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl PatientCase_Diagnosis {
+    pub fn new() -> PatientCase_Diagnosis {
+        ::std::default::Default::default()
+    }
+
+    // string code = 1;
+
+
+    pub fn get_code(&self) -> &str {
+        &self.code
+    }
+    pub fn clear_code(&mut self) {
+        self.code.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_code(&mut self, v: ::std::string::String) {
+        self.code = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_code(&mut self) -> &mut ::std::string::String {
+        &mut self.code
+    }
+
+    // Take field
+    pub fn take_code(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.code, ::std::string::String::new())
+    }
+}
+
+impl ::protobuf::Message for PatientCase_Diagnosis {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.code)?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.code.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.code);
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if !self.code.is_empty() {
+            os.write_string(1, &self.code)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &dyn (::std::any::Any) {
+        self as &dyn (::std::any::Any)
+    }
+    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
+        self as &mut dyn (::std::any::Any)
+    }
+    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> PatientCase_Diagnosis {
+        PatientCase_Diagnosis::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
+        descriptor.get(|| {
+            let mut fields = ::std::vec::Vec::new();
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                "code",
+                |m: &PatientCase_Diagnosis| { &m.code },
+                |m: &mut PatientCase_Diagnosis| { &mut m.code },
+            ));
+            ::protobuf::reflect::MessageDescriptor::new_pb_name::<PatientCase_Diagnosis>(
+                "PatientCase.Diagnosis",
+                fields,
+                file_descriptor_proto()
+            )
+        })
+    }
+
+    fn default_instance() -> &'static PatientCase_Diagnosis {
+        static instance: ::protobuf::rt::LazyV2<PatientCase_Diagnosis> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(PatientCase_Diagnosis::new)
+    }
+}
+
+impl ::protobuf::Clear for PatientCase_Diagnosis {
+    fn clear(&mut self) {
+        self.code.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for PatientCase_Diagnosis {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for PatientCase_Diagnosis {
+    fn as_ref(&self) -> ::protobuf::reflect::ReflectValueRef {
+        ::protobuf::reflect::ReflectValueRef::Message(self)
+    }
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct PatientCase_Procedure {
+    // message fields
+    pub code: ::std::string::String,
+    pub date: i32,
+    pub side: PatientCase_Procedure_Side,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a PatientCase_Procedure {
+    fn default() -> &'a PatientCase_Procedure {
+        <PatientCase_Procedure as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl PatientCase_Procedure {
+    pub fn new() -> PatientCase_Procedure {
+        ::std::default::Default::default()
+    }
+
+    // string code = 1;
+
+
+    pub fn get_code(&self) -> &str {
+        &self.code
+    }
+    pub fn clear_code(&mut self) {
+        self.code.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_code(&mut self, v: ::std::string::String) {
+        self.code = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_code(&mut self) -> &mut ::std::string::String {
+        &mut self.code
+    }
+
+    // Take field
+    pub fn take_code(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.code, ::std::string::String::new())
+    }
+
+    // int32 date = 2;
+
+
+    pub fn get_date(&self) -> i32 {
+        self.date
+    }
+    pub fn clear_date(&mut self) {
+        self.date = 0;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_date(&mut self, v: i32) {
+        self.date = v;
+    }
+
+    // .PatientCase.Procedure.Side side = 3;
+
+
+    pub fn get_side(&self) -> PatientCase_Procedure_Side {
+        self.side
+    }
+    pub fn clear_side(&mut self) {
+        self.side = PatientCase_Procedure_Side::L;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_side(&mut self, v: PatientCase_Procedure_Side) {
+        self.side = v;
+    }
+}
+
+impl ::protobuf::Message for PatientCase_Procedure {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.code)?;
+                },
+                2 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    let tmp = is.read_int32()?;
+                    self.date = tmp;
+                },
+                3 => {
+                    ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(wire_type, is, &mut self.side, 3, &mut self.unknown_fields)?
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.code.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.code);
+        }
+        if self.date != 0 {
+            my_size += ::protobuf::rt::value_size(2, self.date, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.side != PatientCase_Procedure_Side::L {
+            my_size += ::protobuf::rt::enum_size(3, self.side);
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if !self.code.is_empty() {
+            os.write_string(1, &self.code)?;
+        }
+        if self.date != 0 {
+            os.write_int32(2, self.date)?;
+        }
+        if self.side != PatientCase_Procedure_Side::L {
+            os.write_enum(3, ::protobuf::ProtobufEnum::value(&self.side))?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &dyn (::std::any::Any) {
+        self as &dyn (::std::any::Any)
+    }
+    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
+        self as &mut dyn (::std::any::Any)
+    }
+    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> PatientCase_Procedure {
+        PatientCase_Procedure::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
+        descriptor.get(|| {
+            let mut fields = ::std::vec::Vec::new();
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                "code",
+                |m: &PatientCase_Procedure| { &m.code },
+                |m: &mut PatientCase_Procedure| { &mut m.code },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeInt32>(
+                "date",
+                |m: &PatientCase_Procedure| { &m.date },
+                |m: &mut PatientCase_Procedure| { &mut m.date },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeEnum<PatientCase_Procedure_Side>>(
+                "side",
+                |m: &PatientCase_Procedure| { &m.side },
+                |m: &mut PatientCase_Procedure| { &mut m.side },
+            ));
+            ::protobuf::reflect::MessageDescriptor::new_pb_name::<PatientCase_Procedure>(
+                "PatientCase.Procedure",
+                fields,
+                file_descriptor_proto()
+            )
+        })
+    }
+
+    fn default_instance() -> &'static PatientCase_Procedure {
+        static instance: ::protobuf::rt::LazyV2<PatientCase_Procedure> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(PatientCase_Procedure::new)
+    }
+}
+
+impl ::protobuf::Clear for PatientCase_Procedure {
+    fn clear(&mut self) {
+        self.code.clear();
+        self.date = 0;
+        self.side = PatientCase_Procedure_Side::L;
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for PatientCase_Procedure {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for PatientCase_Procedure {
+    fn as_ref(&self) -> ::protobuf::reflect::ReflectValueRef {
+        ::protobuf::reflect::ReflectValueRef::Message(self)
+    }
+}
+
+#[derive(Clone,PartialEq,Eq,Debug,Hash)]
+pub enum PatientCase_Procedure_Side {
+    L = 0,
+    R = 1,
+    B = 2,
+}
+
+impl ::protobuf::ProtobufEnum for PatientCase_Procedure_Side {
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<PatientCase_Procedure_Side> {
+        match value {
+            0 => ::std::option::Option::Some(PatientCase_Procedure_Side::L),
+            1 => ::std::option::Option::Some(PatientCase_Procedure_Side::R),
+            2 => ::std::option::Option::Some(PatientCase_Procedure_Side::B),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn values() -> &'static [Self] {
+        static values: &'static [PatientCase_Procedure_Side] = &[
+            PatientCase_Procedure_Side::L,
+            PatientCase_Procedure_Side::R,
+            PatientCase_Procedure_Side::B,
+        ];
+        values
+    }
+
+    fn enum_descriptor_static() -> &'static ::protobuf::reflect::EnumDescriptor {
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::EnumDescriptor> = ::protobuf::rt::LazyV2::INIT;
+        descriptor.get(|| {
+            ::protobuf::reflect::EnumDescriptor::new_pb_name::<PatientCase_Procedure_Side>("PatientCase.Procedure.Side", file_descriptor_proto())
+        })
+    }
+}
+
+impl ::std::marker::Copy for PatientCase_Procedure_Side {
+}
+
+impl ::std::default::Default for PatientCase_Procedure_Side {
+    fn default() -> Self {
+        PatientCase_Procedure_Side::L
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for PatientCase_Procedure_Side {
+    fn as_ref(&self) -> ::protobuf::reflect::ReflectValueRef {
+        ::protobuf::reflect::ReflectValueRef::Enum(::protobuf::ProtobufEnum::descriptor(self))
     }
 }
 
@@ -930,7 +1465,7 @@ impl ::protobuf::reflect::ProtobufValue for Result {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x0fprotos/pc.proto\"\xc7\x02\n\x0bPatientCase\x12\x0e\n\x02id\x18\x01\
+    \n\x0fprotos/pc.proto\"\xda\x04\n\x0bPatientCase\x12\x0e\n\x02id\x18\x01\
     \x20\x01(\tR\x02id\x12\x1a\n\x08ageYears\x18\x02\x20\x01(\x05R\x08ageYea\
     rs\x12\x18\n\x07ageDays\x18\x03\x20\x01(\x05R\x07ageDays\x12\x1c\n\tbirt\
     hDate\x18\x04\x20\x01(\rR\tbirthDate\x12\x18\n\x07admDate\x18\x05\x20\
@@ -940,10 +1475,17 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x12\x10\n\x03sep\x18\n\x20\x01(\tR\x03sep\x12\x18\n\x07gestage\x18\x0b\
     \x20\x01(\x05R\x07gestage\x12\x10\n\x03los\x18\x0c\x20\x01(\x05R\x03los\
     \x12\x10\n\x03hmv\x18\r\x20\x01(\x05R\x03hmv\x12\x0e\n\x02bh\x18\x0e\x20\
-    \x01(\x08R\x02bh\"R\n\x06Result\x12\x10\n\x03drg\x18\x01\x20\x01(\tR\x03\
-    drg\x12\x10\n\x03mdc\x18\x02\x20\x01(\tR\x03mdc\x12\x12\n\x04pccl\x18\
-    \x03\x20\x01(\rR\x04pccl\x12\x10\n\x03gst\x18\x04\x20\x01(\rR\x03gstb\
-    \x06proto3\
+    \x01(\x08R\x02bh\x124\n\tdiagnoses\x18\x0f\x20\x03(\x0b2\x16.PatientCase\
+    .DiagnosisR\tdiagnoses\x126\n\nprocedures\x18\x10\x20\x03(\x0b2\x16.Pati\
+    entCase.ProcedureR\nprocedures\x1a\x1f\n\tDiagnosis\x12\x12\n\x04code\
+    \x18\x01\x20\x01(\tR\x04code\x1a\x81\x01\n\tProcedure\x12\x12\n\x04code\
+    \x18\x01\x20\x01(\tR\x04code\x12\x12\n\x04date\x18\x02\x20\x01(\x05R\x04\
+    date\x12/\n\x04side\x18\x03\x20\x01(\x0e2\x1b.PatientCase.Procedure.Side\
+    R\x04side\"\x1b\n\x04Side\x12\x05\n\x01L\x10\0\x12\x05\n\x01R\x10\x01\
+    \x12\x05\n\x01B\x10\x02\"R\n\x06Result\x12\x10\n\x03drg\x18\x01\x20\x01(\
+    \tR\x03drg\x12\x10\n\x03mdc\x18\x02\x20\x01(\tR\x03mdc\x12\x12\n\x04pccl\
+    \x18\x03\x20\x01(\rR\x04pccl\x12\x10\n\x03gst\x18\x04\x20\x01(\rR\x03gst\
+    b\x06proto3\
 ";
 
 static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::rt::LazyV2::INIT;
