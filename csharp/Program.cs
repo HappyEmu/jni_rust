@@ -56,9 +56,8 @@ namespace csharp
                         byte* result = LibGrouper.Group(ptr, (uint) pcArray.Length, specHandle, out length);
                         
                         byte[] buf = new byte[length];
-                        buf = result;
                         Marshal.Copy((IntPtr) result, buf, 0, (int) length);
-
+                        
                         // TODO [MemoryLeak]: Release native memory
                         // TODO [Perf] Find way to omit need for copy
                         
