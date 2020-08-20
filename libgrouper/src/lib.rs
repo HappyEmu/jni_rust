@@ -49,27 +49,32 @@ pub extern "C" fn load_specification(url: *const c_char) -> SpecHandle {
     handle
 }
 
-#[repr(C)]
-pub struct Buffer {
-    data: *mut u8,
-    len: usize,
-}
-
 #[no_mangle]
-pub extern "C" fn group(pc_ptr: *const u8, pc_len: u32, spec_handle: SpecHandle, res_length: &mut i32) -> Buffer {
+pub extern "C" fn group(pc_ptr: *const u8, pc_len: u32, spec_handle: SpecHandle, res_length: &mut i32) -> *const u8 {
     let pc = unsafe { from_raw_parts(pc_ptr, pc_len as usize) };
     let pc = protobuf::parse_from_bytes::<protos::pc::PatientCase>(pc);
-    println!("PC = {:?}", pc);
+    // println!("PC = {:?}", pc);
 
-    let mut buf = vec![1,2,3,4].into_boxed_slice();
-    let data = buf.as_mut_ptr();
-    let len = buf.len();
-    std::mem::forget(buf);
+    let result = protos::pc::Result {
+        drg: "960Z".to_string(),
+        mdc: "05".to_string(),
+        pccl: 3,
+        gst: 4,
+        unknown_fields: Default::default(),
+        cached_size: Default::default()
+    };
+    let mut result = result.write_to_bytes()
+        .unwrap()
+        .into_boxed_slice();
 
-    println!("{}", spec_handle);
-    println!("{:?}", res_length);
-    unsafe { *res_length = 10; }
-    Buffer { data, len }
+    let data = result.as_ptr();
+    let len = result.len();
+    std::mem::forget(result);
+
+    //println!("{}", spec_handle);
+    //println!("{:?}", res_length);
+    unsafe { *res_length = len as i32; }
+    data
 }
 
 #[allow(non_snake_case)]

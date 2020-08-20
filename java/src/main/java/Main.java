@@ -9,6 +9,7 @@ public class Main {
 
         var start = System.currentTimeMillis();
 
+        var accum = 0;
         for (int i = 0; i < 1_000_000; i++) {
             var diagnoses = IntStream.range(0, 10).mapToObj(n ->
                 Pc.PatientCase.Diagnosis.newBuilder()
@@ -40,10 +41,11 @@ public class Main {
             var result = LibGrouper.group(pc, specHandle);
             var parsed = Pc.Result.parseFrom(result);
 
+            accum += parsed.getSerializedSize();
             // System.out.println(parsed);
         }
 
         var elapsed = System.currentTimeMillis() - start;
-        System.out.println(elapsed);
+        System.out.println(String.format("Took %dms, %d", elapsed, accum));
     }
 }
