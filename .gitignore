@@ -1,9 +1,10 @@
-.idea/*
-native/grouper/target*
-out/*
-*.iml
+csharp/bin
+csharp/obj
+csharp/.idea
 
-native/grouper/.idea/*
-dotnet/cs_rust_ffi/bin
-dotnet/cs_rust_ffi/obj
-dotnet/cs_rust_ffi/.idea/*
+java/.gradle
+java/build
+java/.idea
+
+libgrouper/target
+libgrouper/.idea

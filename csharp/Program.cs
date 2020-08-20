@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using Google.Protobuf;
 
-namespace cs_rust_ffi
+namespace csharp
 {
     class Program
     {
-        [DllImport("../../../../../native/grouper/target/release/libgrouper", CallingConvention = CallingConvention.Cdecl)]
-        public static extern long load_specification(string url);
-        [DllImport("../../../../../native/grouper/target/release/libgrouper", CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe byte* group(byte* pcPtr, uint pcLen, long handle, out uint length);
-        
         static void Main(string[] args)
         {
-            long specHandle = load_specification("hello/from/csharp");
+            var specHandle = LibGrouper.LoadSpecification("hello/from/csharp");
             
             var pc = new PatientCase();
             pc.Id = "1337";
@@ -29,7 +23,7 @@ namespace cs_rust_ffi
                 fixed(byte* ptr = &pcArray[0])
                 {
                     uint length = 0;
-                    byte* result = group(ptr, (uint) pcArray.Length, specHandle, out length);
+                    byte* result = LibGrouper.Group(ptr, (uint) pcArray.Length, specHandle, out length);
 
                     Console.WriteLine(length);
                 }
