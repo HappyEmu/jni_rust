@@ -16,8 +16,10 @@ use std::time::Duration;
 use std::os::raw::c_char;
 use std::ffi::CStr;
 
+type SpecHandle = i64;
+
 lazy_static! {
-    static ref SPECIFICATIONS: Mutex<HashMap<i64, Spec>> = Mutex::new(HashMap::new());
+    static ref SPECIFICATIONS: Mutex<HashMap<SpecHandle, Spec>> = Mutex::new(HashMap::new());
 }
 
 #[derive(Default)]
@@ -36,10 +38,15 @@ impl Spec {
 }
 
 #[no_mangle]
-pub extern "C" fn load_specification(url: &str) -> u64 {
-    println!("Loading spec from {}", url);
+pub extern "C" fn load_specification(url: *const c_char) -> SpecHandle {
+    let c_url = unsafe { CStr::from_ptr(url) }.to_str().unwrap();
+    println!("Loading spec from {}", c_url);
 
-    1024
+    let mut specs = SPECIFICATIONS.lock().unwrap();
+    let handle = (specs.len() + 1) as SpecHandle;
+    specs.insert(handle, Spec::new("test"));
+
+    handle
 }
 
 #[repr(C)]
@@ -49,9 +56,10 @@ pub struct Buffer {
 }
 
 #[no_mangle]
-pub extern "C" fn group(pc: *const c_char, spec_handle: u64, res_length: &mut i32) -> Buffer {
-    let cstr = unsafe { CStr::from_ptr(pc) }.to_str().unwrap();
-    println!("grouping {}", cstr);
+pub extern "C" fn group(pc_ptr: *const u8, pc_len: u32, spec_handle: SpecHandle, res_length: &mut i32) -> Buffer {
+    let pc = unsafe { from_raw_parts(pc_ptr, pc_len as usize) };
+    let pc = protobuf::parse_from_bytes::<protos::pc::PatientCase>(pc);
+    println!("PC = {:?}", pc);
 
     let mut buf = vec![1,2,3,4].into_boxed_slice();
     let data = buf.as_mut_ptr();
