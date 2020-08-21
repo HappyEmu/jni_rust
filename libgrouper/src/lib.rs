@@ -3,18 +3,21 @@
 
 mod protos;
 
-use jni::objects::{JClass, JString};
-use jni::sys::{jbyteArray, jlong};
-use jni::JNIEnv;
 use lazy_static::lazy_static;
+
 use std::collections::HashMap;
 use std::slice::from_raw_parts;
 use std::sync::Mutex;
-use protos::pc::PatientCase;
-use protobuf::Message;
 use std::time::Duration;
 use std::os::raw::c_char;
 use std::ffi::CStr;
+
+use jni::objects::{JClass, JString};
+use jni::sys::{jbyteArray, jlong};
+use jni::JNIEnv;
+
+use protobuf::Message;
+use protos::pc::PatientCase;
 
 type SpecHandle = i64;
 
@@ -50,10 +53,25 @@ pub extern "C" fn load_specification(url: *const c_char) -> SpecHandle {
 }
 
 #[no_mangle]
+pub extern "C" fn free_specification(handle: SpecHandle) {
+    let mut specs = SPECIFICATIONS.lock().unwrap();
+    let _ = specs.remove(&handle);
+}
+
+#[no_mangle]
 pub extern "C" fn group(pc_ptr: *const u8, pc_len: u32, spec_handle: SpecHandle, res_length: &mut i32) -> *const u8 {
     let pc = unsafe { from_raw_parts(pc_ptr, pc_len as usize) };
     let pc = protobuf::parse_from_bytes::<protos::pc::PatientCase>(pc);
     // println!("PC = {:?}", pc);
+
+    let now = std::time::Instant::now();
+
+    // Spend some time to simulate grouping
+    loop {
+        if now.elapsed().as_micros() >= 20 {
+            break;
+        }
+    }
 
     let result = protos::pc::Result {
         drg: "960Z".to_string(),
@@ -73,8 +91,14 @@ pub extern "C" fn group(pc_ptr: *const u8, pc_len: u32, spec_handle: SpecHandle,
 
     //println!("{}", spec_handle);
     //println!("{:?}", res_length);
-    unsafe { *res_length = len as i32; }
+    *res_length = len as i32;
     data
+}
+
+#[no_mangle]
+pub extern "C" fn free_byte_array(ptr: *const u8, len: i32) {
+    let owned = unsafe { from_raw_parts(ptr, len as usize) }.to_owned();
+    std::mem::drop(owned);
 }
 
 #[allow(non_snake_case)]
@@ -122,7 +146,7 @@ pub extern "system" fn Java_LibGrouper_group(
 
     // Spend some time to simulate grouping
     loop {
-        if now.elapsed().as_micros() >= 0 {
+        if now.elapsed().as_micros() >= 20 {
             break;
         }
     }

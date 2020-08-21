@@ -29,7 +29,7 @@ public class Main {
             var procedures = IntStream.range(0, 10).mapToObj(n ->
                 Pc.PatientCase.Procedure.newBuilder()
                     .setCode("PROC" + n)
-                    .setDate(1 << 32)
+                    .setDate(1 << 20)
                     .setSide(Pc.PatientCase.Procedure.Side.B)
                     .build()
             ).collect(Collectors.toList());
