@@ -1,5 +1,7 @@
+import com.google.common.base.Stopwatch;
 import com.google.protobuf.InvalidProtocolBufferException;
 
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -7,10 +9,17 @@ public class Main {
     public static void main(String[] args) throws InvalidProtocolBufferException {
         var specHandle = LibGrouper.loadSpecification("url/to/load/specification");
 
-        var start = System.currentTimeMillis();
+        var total = Stopwatch.createUnstarted();
+        var assembling = Stopwatch.createUnstarted();
+        var serializing = Stopwatch.createUnstarted();
+        var grouping = Stopwatch.createUnstarted();
+        var parsing = Stopwatch.createUnstarted();
+
+        total.start();
 
         var accum = 0;
         for (int i = 0; i < 1_000_000; i++) {
+            assembling.start();
             var diagnoses = IntStream.range(0, 10).mapToObj(n ->
                 Pc.PatientCase.Diagnosis.newBuilder()
                     .setCode("DIAG" + n)
@@ -33,19 +42,33 @@ public class Main {
                 .setBirthDate(1989 << 20 | 6 << 16 | 29 << 11)
                 .addAllDiagnoses(diagnoses)
                 .addAllProcedures(procedures)
-                .build()
-                .toByteArray();
+                .build();
+            assembling.stop();
+
+            serializing.start();
+            var serialized = pc.toByteArray();
+            serializing.stop();
 
             // System.out.println("PC size is " + pc.length + " bytes");
 
-            var result = LibGrouper.group(pc, specHandle);
+            grouping.start();
+            var result = LibGrouper.group(serialized, specHandle);
+            grouping.stop();
+
+            parsing.start();
             var parsed = Pc.Result.parseFrom(result);
+            parsing.stop();
 
             accum += parsed.getSerializedSize();
             // System.out.println(parsed);
         }
 
-        var elapsed = System.currentTimeMillis() - start;
-        System.out.println(String.format("Took %dms, %d", elapsed, accum));
+        total.stop();
+
+        System.out.println("Total: " + total.elapsed(TimeUnit.MICROSECONDS) / 1000.0);
+        System.out.println("Assembling: " + assembling.elapsed(TimeUnit.MICROSECONDS) / 1000.0);
+        System.out.println("Serializing: " + serializing.elapsed(TimeUnit.MICROSECONDS) / 1000.0);
+        System.out.println("Grouping: " + grouping.elapsed(TimeUnit.MICROSECONDS) / 1000.0);
+        System.out.println("Parsing: " + parsing.elapsed(TimeUnit.MICROSECONDS) / 1000.0);
     }
 }

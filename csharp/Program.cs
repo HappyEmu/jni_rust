@@ -11,13 +11,19 @@ namespace csharp
         static void Main(string[] args)
         {
             var specHandle = LibGrouper.LoadSpecification("hello/from/csharp");
-            var stopwatch = new Stopwatch();
+            var total = new Stopwatch();
+            var assembling = new Stopwatch();
+            var serializing = new Stopwatch();
+            var grouping = new Stopwatch();
+            var parsing = new Stopwatch();
+            
             var accum = 0;
             
-            stopwatch.Start();
+            total.Start();
             for (int i = 0; i < 1_000_000; i++)
             {
-                var diagnoses = new List<PatientCase.Types.Diagnosis>();
+                assembling.Start();
+                var diagnoses = new List<PatientCase.Types.Diagnosis>(16);
                 for (int j = 0; j < 10; j++)
                 {
                     var diag = new PatientCase.Types.Diagnosis();
@@ -26,7 +32,7 @@ namespace csharp
                     diagnoses.Add(diag);
                 }
                 
-                var procedures = new List<PatientCase.Types.Procedure>();
+                var procedures = new List<PatientCase.Types.Procedure>(16);
                 for (int j = 0; j < 10; j++)
                 {
                     var proc = new PatientCase.Types.Procedure();
@@ -44,14 +50,23 @@ namespace csharp
                 pc.SepDate = (2019 << 20 | 6 << 16 | 27 << 11);
                 pc.BirthDate = (1989 << 20 | 6 << 16 | 29 << 11);
                 pc.Diagnoses.AddRange(diagnoses);
-                pc.Procedures.AddRange(procedures); 
+                pc.Procedures.AddRange(procedures);
+                
+                assembling.Stop();
 
-                var result = LibGrouper.Group(pc, specHandle);
+                var result = LibGrouper.Group(pc, specHandle, grouping, parsing, serializing);
                 accum += result.CalculateSize();
             }
-            stopwatch.Stop();
+            total.Stop();
             
-            Console.WriteLine("Took {0}ms, {1}", stopwatch.ElapsedMilliseconds, accum);
+            Console.WriteLine("Took {0}ms, {1}, Assembling: {2}ms, Serializing: {5}ms, Grouping: {3}ms, Parsing: {4}ms",
+                total.Elapsed.TotalMilliseconds,
+                accum,
+                assembling.Elapsed.TotalMilliseconds,
+                grouping.Elapsed.TotalMilliseconds,
+                parsing.Elapsed.TotalMilliseconds,
+                serializing.Elapsed.TotalMilliseconds
+            );
         }
     }
 }
