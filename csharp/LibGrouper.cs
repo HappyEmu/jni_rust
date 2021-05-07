@@ -1,4 +1,5 @@
 using System;
+using System.Buffers;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Google.Protobuf;
@@ -26,16 +27,16 @@ namespace csharp
             CallingConvention = CallingConvention.Cdecl,
             EntryPoint = "group"
         )]
-        private static extern IntPtr NativeGroup(IntPtr pcPtr, uint pcLen, long handle, out uint length);
+        private static extern IntPtr NativeGroup(UIntPtr pcPtr, UIntPtr pcLen, long handle, out UIntPtr length);
         
         [DllImport(
             "/Users/gerberur/work/playground/rust_ffi/libgrouper/target/release/libgrouper.dylib",
             CallingConvention = CallingConvention.Cdecl,
             EntryPoint = "free_byte_array"
         )]
-        public static extern long FreeByteArray(IntPtr ptr, int len);
+        public static extern long FreeByteArray(IntPtr ptr, UIntPtr len);
 
-        public static Result Group(PatientCase pc, long specHandle, Stopwatch grouping, Stopwatch parsing, Stopwatch serializing)
+        public static GroupResponse Group(PatientCase pc, long specHandle, Stopwatch grouping, Stopwatch parsing, Stopwatch serializing)
         {
             serializing.Start();
             var bytes = pc.ToByteArray();
@@ -47,21 +48,21 @@ namespace csharp
                 {
                     // Group
                     grouping.Start();
-                    uint resultLength;
-                    IntPtr resultPtr = NativeGroup((IntPtr) ptr, (uint) bytes.Length, specHandle, out resultLength);
+                    IntPtr resultPtr = NativeGroup((UIntPtr) ptr, (UIntPtr) bytes.Length, specHandle, out var resultLength);
                     grouping.Stop();
                     
                     parsing.Start();
+                    int checkedLen = (int) resultLength.ToUInt32();
                     // Copy from native to managed memory
-                    byte[] buffer = new byte[resultLength];
-                    Marshal.Copy(resultPtr, buffer, 0, (int) resultLength);
+                    byte[] buffer = new byte[checkedLen];
+                    Marshal.Copy(resultPtr, buffer, 0, checkedLen);
 
                     // Free native memory
-                    LibGrouper.FreeByteArray(resultPtr, (int) resultLength);
+                    LibGrouper.FreeByteArray(resultPtr, resultLength);
                     // TODO [Perf] Find way to omit need for copy
                         
                     // Parse
-                    var parsed = Result.Parser.ParseFrom(buffer);
+                    var parsed = GroupResponse.Parser.ParseFrom(buffer);
                     parsing.Stop();
                     return parsed;
                 }

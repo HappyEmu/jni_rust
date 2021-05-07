@@ -37,9 +37,31 @@ message PatientCase {
   }
 }
 
-message Result {
+message GroupResult {
   string drg = 1;
   string mdc = 2;
   uint32 pccl = 3;
   uint32 gst = 4;
+}
+
+message GroupResponse {
+  GroupResult result = 1;
+  PatientCase pc = 2;
+}
+
+message ecw {
+  message SwissDrg {
+    int32 ecw = 1;
+    int32 ct = 2;
+  }
+
+  message Tarpsy {
+    int32 dcw = 1;
+    int32 ecw = 2;
+  }
+
+  message StReha {
+    int32 ecw = 1;
+    int32 phase = 2;
+  }
 }

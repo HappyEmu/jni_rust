@@ -3908,8 +3908,8 @@ public final class Pc {
 
   }
 
-  public interface ResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Result)
+  public interface GroupResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GroupResult)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -3949,18 +3949,18 @@ public final class Pc {
     int getGst();
   }
   /**
-   * Protobuf type {@code Result}
+   * Protobuf type {@code GroupResult}
    */
-  public static final class Result extends
+  public static final class GroupResult extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Result)
-      ResultOrBuilder {
+      // @@protoc_insertion_point(message_implements:GroupResult)
+      GroupResultOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Result.newBuilder() to construct.
-    private Result(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use GroupResult.newBuilder() to construct.
+    private GroupResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Result() {
+    private GroupResult() {
       drg_ = "";
       mdc_ = "";
     }
@@ -3969,7 +3969,7 @@ public final class Pc {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Result();
+      return new GroupResult();
     }
 
     @java.lang.Override
@@ -3977,7 +3977,7 @@ public final class Pc {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Result(
+    private GroupResult(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4038,15 +4038,15 @@ public final class Pc {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Pc.internal_static_Result_descriptor;
+      return Pc.internal_static_GroupResult_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Pc.internal_static_Result_fieldAccessorTable
+      return Pc.internal_static_GroupResult_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Pc.Result.class, Pc.Result.Builder.class);
+              Pc.GroupResult.class, Pc.GroupResult.Builder.class);
     }
 
     public static final int DRG_FIELD_NUMBER = 1;
@@ -4206,10 +4206,10 @@ public final class Pc {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Pc.Result)) {
+      if (!(obj instanceof Pc.GroupResult)) {
         return super.equals(obj);
       }
-      Pc.Result other = (Pc.Result) obj;
+      Pc.GroupResult other = (Pc.GroupResult) obj;
 
       if (!getDrg()
           .equals(other.getDrg())) return false;
@@ -4243,69 +4243,69 @@ public final class Pc {
       return hash;
     }
 
-    public static Pc.Result parseFrom(
+    public static Pc.GroupResult parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Pc.Result parseFrom(
+    public static Pc.GroupResult parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Pc.Result parseFrom(
+    public static Pc.GroupResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Pc.Result parseFrom(
+    public static Pc.GroupResult parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Pc.Result parseFrom(byte[] data)
+    public static Pc.GroupResult parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Pc.Result parseFrom(
+    public static Pc.GroupResult parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Pc.Result parseFrom(java.io.InputStream input)
+    public static Pc.GroupResult parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Pc.Result parseFrom(
+    public static Pc.GroupResult parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Pc.Result parseDelimitedFrom(java.io.InputStream input)
+    public static Pc.GroupResult parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Pc.Result parseDelimitedFrom(
+    public static Pc.GroupResult parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Pc.Result parseFrom(
+    public static Pc.GroupResult parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Pc.Result parseFrom(
+    public static Pc.GroupResult parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4318,7 +4318,7 @@ public final class Pc {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Pc.Result prototype) {
+    public static Builder newBuilder(Pc.GroupResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4334,26 +4334,26 @@ public final class Pc {
       return builder;
     }
     /**
-     * Protobuf type {@code Result}
+     * Protobuf type {@code GroupResult}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Result)
-        Pc.ResultOrBuilder {
+        // @@protoc_insertion_point(builder_implements:GroupResult)
+        Pc.GroupResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Pc.internal_static_Result_descriptor;
+        return Pc.internal_static_GroupResult_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Pc.internal_static_Result_fieldAccessorTable
+        return Pc.internal_static_GroupResult_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Pc.Result.class, Pc.Result.Builder.class);
+                Pc.GroupResult.class, Pc.GroupResult.Builder.class);
       }
 
-      // Construct using Pc.Result.newBuilder()
+      // Construct using Pc.GroupResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4385,17 +4385,17 @@ public final class Pc {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Pc.internal_static_Result_descriptor;
+        return Pc.internal_static_GroupResult_descriptor;
       }
 
       @java.lang.Override
-      public Pc.Result getDefaultInstanceForType() {
-        return Pc.Result.getDefaultInstance();
+      public Pc.GroupResult getDefaultInstanceForType() {
+        return Pc.GroupResult.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Pc.Result build() {
-        Pc.Result result = buildPartial();
+      public Pc.GroupResult build() {
+        Pc.GroupResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4403,8 +4403,8 @@ public final class Pc {
       }
 
       @java.lang.Override
-      public Pc.Result buildPartial() {
-        Pc.Result result = new Pc.Result(this);
+      public Pc.GroupResult buildPartial() {
+        Pc.GroupResult result = new Pc.GroupResult(this);
         result.drg_ = drg_;
         result.mdc_ = mdc_;
         result.pccl_ = pccl_;
@@ -4447,16 +4447,16 @@ public final class Pc {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Pc.Result) {
-          return mergeFrom((Pc.Result)other);
+        if (other instanceof Pc.GroupResult) {
+          return mergeFrom((Pc.GroupResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Pc.Result other) {
-        if (other == Pc.Result.getDefaultInstance()) return this;
+      public Builder mergeFrom(Pc.GroupResult other) {
+        if (other == Pc.GroupResult.getDefaultInstance()) return this;
         if (!other.getDrg().isEmpty()) {
           drg_ = other.drg_;
           onChanged();
@@ -4486,11 +4486,11 @@ public final class Pc {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Pc.Result parsedMessage = null;
+        Pc.GroupResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Pc.Result) e.getUnfinishedMessage();
+          parsedMessage = (Pc.GroupResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4726,41 +4726,865 @@ public final class Pc {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Result)
+      // @@protoc_insertion_point(builder_scope:GroupResult)
     }
 
-    // @@protoc_insertion_point(class_scope:Result)
-    private static final Pc.Result DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:GroupResult)
+    private static final Pc.GroupResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Pc.Result();
+      DEFAULT_INSTANCE = new Pc.GroupResult();
     }
 
-    public static Pc.Result getDefaultInstance() {
+    public static Pc.GroupResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Result>
-        PARSER = new com.google.protobuf.AbstractParser<Result>() {
+    private static final com.google.protobuf.Parser<GroupResult>
+        PARSER = new com.google.protobuf.AbstractParser<GroupResult>() {
       @java.lang.Override
-      public Result parsePartialFrom(
+      public GroupResult parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Result(input, extensionRegistry);
+        return new GroupResult(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Result> parser() {
+    public static com.google.protobuf.Parser<GroupResult> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Result> getParserForType() {
+    public com.google.protobuf.Parser<GroupResult> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public Pc.Result getDefaultInstanceForType() {
+    public Pc.GroupResult getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GroupResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GroupResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.GroupResult result = 1;</code>
+     * @return Whether the result field is set.
+     */
+    boolean hasResult();
+    /**
+     * <code>.GroupResult result = 1;</code>
+     * @return The result.
+     */
+    Pc.GroupResult getResult();
+    /**
+     * <code>.GroupResult result = 1;</code>
+     */
+    Pc.GroupResultOrBuilder getResultOrBuilder();
+
+    /**
+     * <code>.PatientCase pc = 2;</code>
+     * @return Whether the pc field is set.
+     */
+    boolean hasPc();
+    /**
+     * <code>.PatientCase pc = 2;</code>
+     * @return The pc.
+     */
+    Pc.PatientCase getPc();
+    /**
+     * <code>.PatientCase pc = 2;</code>
+     */
+    Pc.PatientCaseOrBuilder getPcOrBuilder();
+  }
+  /**
+   * Protobuf type {@code GroupResponse}
+   */
+  public static final class GroupResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:GroupResponse)
+      GroupResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GroupResponse.newBuilder() to construct.
+    private GroupResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GroupResponse() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GroupResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GroupResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              Pc.GroupResult.Builder subBuilder = null;
+              if (result_ != null) {
+                subBuilder = result_.toBuilder();
+              }
+              result_ = input.readMessage(Pc.GroupResult.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(result_);
+                result_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              Pc.PatientCase.Builder subBuilder = null;
+              if (pc_ != null) {
+                subBuilder = pc_.toBuilder();
+              }
+              pc_ = input.readMessage(Pc.PatientCase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(pc_);
+                pc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Pc.internal_static_GroupResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Pc.internal_static_GroupResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Pc.GroupResponse.class, Pc.GroupResponse.Builder.class);
+    }
+
+    public static final int RESULT_FIELD_NUMBER = 1;
+    private Pc.GroupResult result_;
+    /**
+     * <code>.GroupResult result = 1;</code>
+     * @return Whether the result field is set.
+     */
+    @java.lang.Override
+    public boolean hasResult() {
+      return result_ != null;
+    }
+    /**
+     * <code>.GroupResult result = 1;</code>
+     * @return The result.
+     */
+    @java.lang.Override
+    public Pc.GroupResult getResult() {
+      return result_ == null ? Pc.GroupResult.getDefaultInstance() : result_;
+    }
+    /**
+     * <code>.GroupResult result = 1;</code>
+     */
+    @java.lang.Override
+    public Pc.GroupResultOrBuilder getResultOrBuilder() {
+      return getResult();
+    }
+
+    public static final int PC_FIELD_NUMBER = 2;
+    private Pc.PatientCase pc_;
+    /**
+     * <code>.PatientCase pc = 2;</code>
+     * @return Whether the pc field is set.
+     */
+    @java.lang.Override
+    public boolean hasPc() {
+      return pc_ != null;
+    }
+    /**
+     * <code>.PatientCase pc = 2;</code>
+     * @return The pc.
+     */
+    @java.lang.Override
+    public Pc.PatientCase getPc() {
+      return pc_ == null ? Pc.PatientCase.getDefaultInstance() : pc_;
+    }
+    /**
+     * <code>.PatientCase pc = 2;</code>
+     */
+    @java.lang.Override
+    public Pc.PatientCaseOrBuilder getPcOrBuilder() {
+      return getPc();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (result_ != null) {
+        output.writeMessage(1, getResult());
+      }
+      if (pc_ != null) {
+        output.writeMessage(2, getPc());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (result_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getResult());
+      }
+      if (pc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getPc());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Pc.GroupResponse)) {
+        return super.equals(obj);
+      }
+      Pc.GroupResponse other = (Pc.GroupResponse) obj;
+
+      if (hasResult() != other.hasResult()) return false;
+      if (hasResult()) {
+        if (!getResult()
+            .equals(other.getResult())) return false;
+      }
+      if (hasPc() != other.hasPc()) return false;
+      if (hasPc()) {
+        if (!getPc()
+            .equals(other.getPc())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasResult()) {
+        hash = (37 * hash) + RESULT_FIELD_NUMBER;
+        hash = (53 * hash) + getResult().hashCode();
+      }
+      if (hasPc()) {
+        hash = (37 * hash) + PC_FIELD_NUMBER;
+        hash = (53 * hash) + getPc().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Pc.GroupResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Pc.GroupResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Pc.GroupResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Pc.GroupResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Pc.GroupResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Pc.GroupResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Pc.GroupResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Pc.GroupResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Pc.GroupResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static Pc.GroupResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Pc.GroupResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Pc.GroupResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Pc.GroupResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GroupResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GroupResponse)
+        Pc.GroupResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Pc.internal_static_GroupResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Pc.internal_static_GroupResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Pc.GroupResponse.class, Pc.GroupResponse.Builder.class);
+      }
+
+      // Construct using Pc.GroupResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (resultBuilder_ == null) {
+          result_ = null;
+        } else {
+          result_ = null;
+          resultBuilder_ = null;
+        }
+        if (pcBuilder_ == null) {
+          pc_ = null;
+        } else {
+          pc_ = null;
+          pcBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Pc.internal_static_GroupResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public Pc.GroupResponse getDefaultInstanceForType() {
+        return Pc.GroupResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Pc.GroupResponse build() {
+        Pc.GroupResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Pc.GroupResponse buildPartial() {
+        Pc.GroupResponse result = new Pc.GroupResponse(this);
+        if (resultBuilder_ == null) {
+          result.result_ = result_;
+        } else {
+          result.result_ = resultBuilder_.build();
+        }
+        if (pcBuilder_ == null) {
+          result.pc_ = pc_;
+        } else {
+          result.pc_ = pcBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Pc.GroupResponse) {
+          return mergeFrom((Pc.GroupResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Pc.GroupResponse other) {
+        if (other == Pc.GroupResponse.getDefaultInstance()) return this;
+        if (other.hasResult()) {
+          mergeResult(other.getResult());
+        }
+        if (other.hasPc()) {
+          mergePc(other.getPc());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Pc.GroupResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Pc.GroupResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private Pc.GroupResult result_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Pc.GroupResult, Pc.GroupResult.Builder, Pc.GroupResultOrBuilder> resultBuilder_;
+      /**
+       * <code>.GroupResult result = 1;</code>
+       * @return Whether the result field is set.
+       */
+      public boolean hasResult() {
+        return resultBuilder_ != null || result_ != null;
+      }
+      /**
+       * <code>.GroupResult result = 1;</code>
+       * @return The result.
+       */
+      public Pc.GroupResult getResult() {
+        if (resultBuilder_ == null) {
+          return result_ == null ? Pc.GroupResult.getDefaultInstance() : result_;
+        } else {
+          return resultBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.GroupResult result = 1;</code>
+       */
+      public Builder setResult(Pc.GroupResult value) {
+        if (resultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          result_ = value;
+          onChanged();
+        } else {
+          resultBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.GroupResult result = 1;</code>
+       */
+      public Builder setResult(
+          Pc.GroupResult.Builder builderForValue) {
+        if (resultBuilder_ == null) {
+          result_ = builderForValue.build();
+          onChanged();
+        } else {
+          resultBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.GroupResult result = 1;</code>
+       */
+      public Builder mergeResult(Pc.GroupResult value) {
+        if (resultBuilder_ == null) {
+          if (result_ != null) {
+            result_ =
+              Pc.GroupResult.newBuilder(result_).mergeFrom(value).buildPartial();
+          } else {
+            result_ = value;
+          }
+          onChanged();
+        } else {
+          resultBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.GroupResult result = 1;</code>
+       */
+      public Builder clearResult() {
+        if (resultBuilder_ == null) {
+          result_ = null;
+          onChanged();
+        } else {
+          result_ = null;
+          resultBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.GroupResult result = 1;</code>
+       */
+      public Pc.GroupResult.Builder getResultBuilder() {
+        
+        onChanged();
+        return getResultFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.GroupResult result = 1;</code>
+       */
+      public Pc.GroupResultOrBuilder getResultOrBuilder() {
+        if (resultBuilder_ != null) {
+          return resultBuilder_.getMessageOrBuilder();
+        } else {
+          return result_ == null ?
+              Pc.GroupResult.getDefaultInstance() : result_;
+        }
+      }
+      /**
+       * <code>.GroupResult result = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Pc.GroupResult, Pc.GroupResult.Builder, Pc.GroupResultOrBuilder> 
+          getResultFieldBuilder() {
+        if (resultBuilder_ == null) {
+          resultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Pc.GroupResult, Pc.GroupResult.Builder, Pc.GroupResultOrBuilder>(
+                  getResult(),
+                  getParentForChildren(),
+                  isClean());
+          result_ = null;
+        }
+        return resultBuilder_;
+      }
+
+      private Pc.PatientCase pc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Pc.PatientCase, Pc.PatientCase.Builder, Pc.PatientCaseOrBuilder> pcBuilder_;
+      /**
+       * <code>.PatientCase pc = 2;</code>
+       * @return Whether the pc field is set.
+       */
+      public boolean hasPc() {
+        return pcBuilder_ != null || pc_ != null;
+      }
+      /**
+       * <code>.PatientCase pc = 2;</code>
+       * @return The pc.
+       */
+      public Pc.PatientCase getPc() {
+        if (pcBuilder_ == null) {
+          return pc_ == null ? Pc.PatientCase.getDefaultInstance() : pc_;
+        } else {
+          return pcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.PatientCase pc = 2;</code>
+       */
+      public Builder setPc(Pc.PatientCase value) {
+        if (pcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          pc_ = value;
+          onChanged();
+        } else {
+          pcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PatientCase pc = 2;</code>
+       */
+      public Builder setPc(
+          Pc.PatientCase.Builder builderForValue) {
+        if (pcBuilder_ == null) {
+          pc_ = builderForValue.build();
+          onChanged();
+        } else {
+          pcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PatientCase pc = 2;</code>
+       */
+      public Builder mergePc(Pc.PatientCase value) {
+        if (pcBuilder_ == null) {
+          if (pc_ != null) {
+            pc_ =
+              Pc.PatientCase.newBuilder(pc_).mergeFrom(value).buildPartial();
+          } else {
+            pc_ = value;
+          }
+          onChanged();
+        } else {
+          pcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PatientCase pc = 2;</code>
+       */
+      public Builder clearPc() {
+        if (pcBuilder_ == null) {
+          pc_ = null;
+          onChanged();
+        } else {
+          pc_ = null;
+          pcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PatientCase pc = 2;</code>
+       */
+      public Pc.PatientCase.Builder getPcBuilder() {
+        
+        onChanged();
+        return getPcFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.PatientCase pc = 2;</code>
+       */
+      public Pc.PatientCaseOrBuilder getPcOrBuilder() {
+        if (pcBuilder_ != null) {
+          return pcBuilder_.getMessageOrBuilder();
+        } else {
+          return pc_ == null ?
+              Pc.PatientCase.getDefaultInstance() : pc_;
+        }
+      }
+      /**
+       * <code>.PatientCase pc = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Pc.PatientCase, Pc.PatientCase.Builder, Pc.PatientCaseOrBuilder> 
+          getPcFieldBuilder() {
+        if (pcBuilder_ == null) {
+          pcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Pc.PatientCase, Pc.PatientCase.Builder, Pc.PatientCaseOrBuilder>(
+                  getPc(),
+                  getParentForChildren(),
+                  isClean());
+          pc_ = null;
+        }
+        return pcBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GroupResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:GroupResponse)
+    private static final Pc.GroupResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Pc.GroupResponse();
+    }
+
+    public static Pc.GroupResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GroupResponse>
+        PARSER = new com.google.protobuf.AbstractParser<GroupResponse>() {
+      @java.lang.Override
+      public GroupResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GroupResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GroupResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GroupResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Pc.GroupResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4782,10 +5606,15 @@ public final class Pc {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PatientCase_Procedure_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Result_descriptor;
+    internal_static_GroupResult_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Result_fieldAccessorTable;
+      internal_static_GroupResult_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GroupResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GroupResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4806,9 +5635,11 @@ public final class Pc {
       "ase.Procedure\032\031\n\tDiagnosis\022\014\n\004code\030\001 \001(\t" +
       "\032o\n\tProcedure\022\014\n\004code\030\001 \001(\t\022\014\n\004date\030\002 \001(" +
       "\005\022)\n\004side\030\003 \001(\0162\033.PatientCase.Procedure." +
-      "Side\"\033\n\004Side\022\005\n\001L\020\000\022\005\n\001R\020\001\022\005\n\001B\020\002\"=\n\006Res" +
-      "ult\022\013\n\003drg\030\001 \001(\t\022\013\n\003mdc\030\002 \001(\t\022\014\n\004pccl\030\003 " +
-      "\001(\r\022\013\n\003gst\030\004 \001(\rb\006proto3"
+      "Side\"\033\n\004Side\022\005\n\001L\020\000\022\005\n\001R\020\001\022\005\n\001B\020\002\"B\n\013Gro" +
+      "upResult\022\013\n\003drg\030\001 \001(\t\022\013\n\003mdc\030\002 \001(\t\022\014\n\004pc" +
+      "cl\030\003 \001(\r\022\013\n\003gst\030\004 \001(\r\"G\n\rGroupResponse\022\034" +
+      "\n\006result\030\001 \001(\0132\014.GroupResult\022\030\n\002pc\030\002 \001(\013" +
+      "2\014.PatientCaseb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4832,12 +5663,18 @@ public final class Pc {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PatientCase_Procedure_descriptor,
         new java.lang.String[] { "Code", "Date", "Side", });
-    internal_static_Result_descriptor =
+    internal_static_GroupResult_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_Result_fieldAccessorTable = new
+    internal_static_GroupResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Result_descriptor,
+        internal_static_GroupResult_descriptor,
         new java.lang.String[] { "Drg", "Mdc", "Pccl", "Gst", });
+    internal_static_GroupResponse_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_GroupResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GroupResponse_descriptor,
+        new java.lang.String[] { "Result", "Pc", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

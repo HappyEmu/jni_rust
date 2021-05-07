@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) throws InvalidProtocolBufferException {
-        var specHandle = LibGrouper.loadSpecification("url/to/load/specification");
+        var specHandle = LibGrouper.loadSpecificationFromPath("url/to/load/specification", 0);
 
         var total = Stopwatch.createUnstarted();
         var assembling = Stopwatch.createUnstarted();
@@ -52,11 +52,11 @@ public class Main {
             // System.out.println("PC size is " + pc.length + " bytes");
 
             grouping.start();
-            var result = LibGrouper.group(serialized, specHandle);
+            var result = LibGrouper.group(specHandle, serialized);
             grouping.stop();
 
             parsing.start();
-            var parsed = Pc.Result.parseFrom(result);
+            var parsed = Pc.GroupResponse.parseFrom(result);
             parsing.stop();
 
             accum += parsed.getSerializedSize();
